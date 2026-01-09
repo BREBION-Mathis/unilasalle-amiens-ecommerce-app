@@ -57,4 +57,20 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Navigation entre les écrans
+    implementation(libs.navigation.compose)
+
+    // Appels API (Retrofit)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+
+    // Chargement des images (Coil)
+    implementation(libs.coil.compose)
+
+    // ViewModel pour Compose
+    implementation(libs.lifecycle.viewmodel.compose)
+
+    // Stockage local du panier
+    implementation(libs.datastore.preferences)
 }
