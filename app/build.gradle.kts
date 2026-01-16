@@ -78,4 +78,6 @@ dependencies {
 
     // Stockage local du panier
     implementation(libs.datastore.preferences)
+
+    implementation("com.google.code.gson:gson:2.13.2")
 }
