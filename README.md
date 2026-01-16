@@ -10,7 +10,7 @@ Ce projet a été réalisé dans le cadre du module de développement mobile, en
 
 ### 🛍️ Catalogue & Navigation
 
-- **Listing Produits** : Affichage des produits sous forme de grille responsive (`LazyVerticalGrid`)
+- **Listing Produits** : Affichage des produits sous forme de grille responsive
 - **Filtrage par Catégorie** : Navigation fluide entre les catégories via des "Chips" (Electronics, Jewelery, etc.)
 - **Recherche Dynamique** : Barre de recherche instantanée (filtrage local pour la performance)
 - **Tri Intelligent** : Possibilité de trier les produits par prix (croissant/décroissant)
@@ -36,12 +36,12 @@ Le projet suit rigoureusement le pattern **MVVM** (Model - View - ViewModel) pou
 ### Schéma de l'Architecture
 
 ```
-UI (Jetpack Compose)
-        ↕️ Observe State / Send Events
-    ViewModel
-        ↕️ Call Business Logic
-    Repository
-        ↕️
+                UI (Jetpack Compose)
+                    ↕️ Observe State / Send Events
+                ViewModel
+                    ↕️ Call Business Logic
+                Repository
+                    ↕️
     ┌─────────────────────────────────┐
     │                                 │
 HTTP Requests                   Read/Write JSON
@@ -55,25 +55,25 @@ Remote Data Source            Local Data Source
 
 #### 🎨 UI : Jetpack Compose
 
-- Approche déclarative moderne (similaire à React)
-- Utilisation du **Unidirectional Data Flow (UDF)** : L'UI observe un état immuable (`StateFlow`) et émet des événements vers le ViewModel
+- Approche déclarative moderne
+- Utilisation du **Unidirectional Data Flow (UDF)** : L'UI observe un état immuable et émet des événements vers le ViewModel
 
 #### ⚙️ Logique : ViewModel & Coroutines
 
 - Les ViewModel survivent aux changements de configuration (rotation d'écran)
-- Utilisation des **Coroutines** et de `viewModelScope` pour gérer l'asynchronisme (appels API) sans bloquer le thread principal
+- Utilisation des **Coroutines** et de `viewModelScope` pour gérer les appelles asynchrones sans bloquer le thread principal
 - **StateFlow** est utilisé pour exposer des flux de données réactifs à l'UI
 
 #### 💾 Données : Repository Pattern
 
 - Le Repository agit comme une **source de vérité unique**
-- Abstrait l'origine des données (API ou Stockage Local) pour le reste de l'application
+- Abstrait l'origine des données pour le reste de l'application
 
 #### 🌐 Réseau & Stockage
 
 - **Retrofit + Gson** : Pour les appels API REST typés
 - **Coil** : Pour le chargement asynchrone et le cache des images
-- **DataStore Preferences** : Pour la persistance locale légère (Panier et Historique) sous forme de JSON sérialisé
+- **DataStore Preferences** : Pour la persistance locale légère sous forme de JSON sérialisé
 
 ---
 
@@ -138,8 +138,8 @@ L'utilisation de `items(list)` dans `LazyColumn` et `LazyVerticalGrid` assure de
 
 ### 🔍 Search Bar Optimisée
 
-La recherche filtre un cache local (`allProductsCache`) dans le ViewModel pour éviter de spammer l'API à chaque frappe clavier, garantissant une UX instantanée.
+La recherche filtre un cache local dans le ViewModel pour éviter de spammer l'API à chaque frappe clavier, garantissant une UX instantanée.
 
 ### 🧭 Navigation
 
-Utilisation de **Navigation Compose** avec passage d'arguments (ex: `product_detail/{id}`) pour découpler les écrans.
+Utilisation de **Navigation Compose** avec passage d'arguments pour découpler les écrans.
