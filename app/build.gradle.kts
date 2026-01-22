@@ -18,6 +18,10 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+
+
+        // Using variable in project scope for API URL
+        buildConfigField("String", "API_BASE_URL", "\"https://fakestoreapi.com\"")
     }
 
     buildTypes {
@@ -38,6 +42,7 @@ android {
     }
     buildFeatures {
         compose = true
+        buildConfig = true
     }
 }
 
@@ -57,4 +62,22 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    // Navigation entre les écrans
+    implementation(libs.navigation.compose)
+
+    // Appels API (Retrofit)
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.gson)
+
+    // Chargement des images (Coil)
+    implementation(libs.coil.compose)
+
+    // ViewModel pour Compose
+    implementation(libs.lifecycle.viewmodel.compose)
+
+    // Stockage local du panier
+    implementation(libs.datastore.preferences)
+
+    implementation("com.google.code.gson:gson:2.13.2")
 }
